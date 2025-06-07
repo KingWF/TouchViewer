@@ -68,30 +68,45 @@ export default {
   }
 }
 </script>
-2. 替换为电子书内容
+```
+### 2. 替换为电子书内容
+
+```vue
 <div class="image-viewer">
   <!-- 替换此处内容为电子书或其他元素 -->
   <EbookContent :content="currentBookContent" />
 </div>
-API 文档
-属性
-属性	类型	默认值	说明
-images	Array	[]	图片URL数组
-minScale	Number	0.5	最小缩放比例
-maxScale	Number	4	最大缩放比例
-content	Any	-	自定义内容（如电子书）
-方法
-方法名	说明
-zoomIn()	放大内容
-zoomOut()	缩小内容
-reset()	重置缩放比例和位置
-selectItem(item)	选择新内容
-事件
-事件名	说明
-scale-changed	缩放比例变化时触发
-content-selected	切换内容时触发
-工作原理
-核心逻辑
+```
+
+## API 文档
+
+### 属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `images` | `Array` | `[]` | 图片URL数组 |
+| `minScale` | `Number` | `0.5` | 最小缩放比例 |
+| `maxScale` | `Number` | `4` | 最大缩放比例 |
+| `content` | `Any` | `-` | 自定义内容（如电子书） |
+
+### 方法
+
+| 方法名 | 说明 |
+|--------|------|
+| `zoomIn()` | 放大内容 |
+| `zoomOut()` | 缩小内容 |
+| `reset()` | 重置缩放比例和位置 |
+| `selectItem(item)` | 选择新内容 |
+
+### 事件
+
+| 事件名 | 说明 |
+|--------|------|
+| `scale-changed` | 缩放比例变化时触发 |
+| `content-selected` | 切换内容时触发 |
+## 工作原理
+### 核心逻辑
+```javascript
 // 阻止默认触摸行为，避免整体缩放
 @touchmove.prevent="onTouchMove"
 
@@ -117,24 +132,26 @@ if (scaledWidth > containerWidth) {
 .image-container {
   transform: translate(${posX}px, ${posY}px) scale(${scale});
 }
-在微信小程序中的应用
-在微信小程序中使用：
+```
+## 在微信小程序中的应用
 
 将组件构建为独立的H5页面
 在小程序中使用<web-view>加载
 通过URL参数传递初始数据
+```vue
 <!-- 小程序页面中 -->
 <web-view src="https://your-domain.com/touch-viewer?images=img1,img2" />
-贡献指南
+```
+## 贡献指南
 欢迎任何形式的贡献！以下是参与步骤：
 
-Fork 本项目
+## Fork 本项目
 创建新的特性分支 (git checkout -b feature/amazing-feature)
 提交您的修改 (git commit -m 'Add some amazing feature')
 推送至分支 (git push origin feature/amazing-feature)
 创建 Pull Request
-许可证
+## 许可证
 本项目采用 MIT 许可证
 
-支持
+## 支持
 如遇到任何问题，请提交 GitHub Issue
